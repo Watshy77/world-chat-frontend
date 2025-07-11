@@ -10,26 +10,37 @@ export default function LoginPage() {
 	const router = useRouter();
 
 	const submit = async () => {
-		const { token } = await login(username, password);
-		localStorage.setItem("token", token);
-		router.replace("/home");
+		try {
+			const data = await login(username, password);
+			localStorage.setItem("token", data.token);
+			router.push("/home");
+		} catch (error) {
+			console.error("Erreur lors de la connexion", error);
+		}
 	};
 
 	return (
-		<div>
-			<h1>Connexion</h1>
+		<div className="p-4">
+			<h1 className="text-xl font-bold mb-4">Connexion</h1>
 			<input
-				placeholder="Username"
+				placeholder="Nom d’utilisateur"
 				value={username}
 				onChange={(e) => setUsername(e.target.value)}
+				className="block border p-2 mb-2 w-full"
 			/>
 			<input
-				placeholder="Password"
+				placeholder="Mot de passe"
 				type="password"
 				value={password}
 				onChange={(e) => setPassword(e.target.value)}
+				className="block border p-2 mb-4 w-full"
 			/>
-			<button onClick={submit}>Login</button>
+			<button
+				onClick={submit}
+				className="bg-green-500 text-white px-4 py-2 rounded"
+			>
+				Se connecter
+			</button>
 		</div>
 	);
 }

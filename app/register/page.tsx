@@ -7,42 +7,39 @@ import { useState } from "react";
 export default function RegisterPage() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-	const [error, setError] = useState("");
 	const router = useRouter();
 
 	const submit = async () => {
-		setError("");
-		if (!username || !password)
-			return setError("Remplissez tous les champs.");
-
 		try {
 			await register(username, password);
 			router.push("/login");
-		} catch (err) {
-			if (err instanceof Error) {
-				setError(err.message);
-			} else {
-				setError("Une erreur est survenue lors de l'inscription.");
-			}
+		} catch (error) {
+			console.error("Erreur lors de l’inscription", error);
 		}
 	};
 
 	return (
-		<div>
-			<h1>Inscription</h1>
-			{error && <p style={{ color: "red" }}>{error}</p>}
+		<div className="p-4">
+			<h1 className="text-xl font-bold mb-4">Inscription</h1>
 			<input
-				placeholder="Username"
+				placeholder="Nom d’utilisateur"
 				value={username}
 				onChange={(e) => setUsername(e.target.value)}
+				className="block border p-2 mb-2 w-full"
 			/>
 			<input
-				placeholder="Password"
+				placeholder="Mot de passe"
 				type="password"
 				value={password}
 				onChange={(e) => setPassword(e.target.value)}
+				className="block border p-2 mb-4 w-full"
 			/>
-			<button onClick={submit}>Register</button>
+			<button
+				onClick={submit}
+				className="bg-blue-500 text-white px-4 py-2 rounded"
+			>
+				Créer un compte
+			</button>
 		</div>
 	);
 }
