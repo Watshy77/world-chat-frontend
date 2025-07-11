@@ -1,6 +1,7 @@
 export default function HomePage() {
 	return (
 		<main className="flex h-screen flex-col items-center justify-center bg-gray-100">
+			{/* eslint-disable react/no-unescaped-entities */}
 			<h1 className="text-black text-4xl font-bold mb-4">
 				Bienvenue sur le Chat
 			</h1>
@@ -22,6 +23,7 @@ export default function HomePage() {
 					S'inscrire
 				</a>
 			</div>
+			{/* eslint-enable react/no-unescaped-entities */}
 		</main>
 	);
 }

@@ -26,6 +26,7 @@ export default function HomePage() {
 
 	return (
 		<div className="flex h-screen">
+			{/* eslint-disable react/no-unescaped-entities */}
 			<Sidebar onSelectRoom={handleSelectRoom} />
 
 			<ChatWindow activeRoom={activeRoom} roomId={roomId} />
@@ -39,6 +40,7 @@ export default function HomePage() {
 					</div>
 				)}
 			</div>
+			{/* eslint-enable react/no-unescaped-entities */}
 		</div>
 	);
 }

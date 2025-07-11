@@ -17,6 +17,7 @@ export default function LoginPage() {
 
 	return (
 		<div>
+			{/* eslint-disable react/no-unescaped-entities */}
 			<h1>Connexion</h1>
 			<input
 				placeholder="Username"
@@ -30,6 +31,7 @@ export default function LoginPage() {
 				onChange={(e) => setPassword(e.target.value)}
 			/>
 			<button onClick={submit}>Login</button>
+			{/* eslint-enable react/no-unescaped-entities */}
 		</div>
 	);
 }

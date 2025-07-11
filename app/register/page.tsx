@@ -25,6 +25,7 @@ export default function RegisterPage() {
 
 	return (
 		<div>
+			{/* eslint-disable react/no-unescaped-entities */}
 			<h1>Inscription</h1>
 			{error && <p style={{ color: "red" }}>{error}</p>}
 			<input
@@ -39,6 +40,7 @@ export default function RegisterPage() {
 				onChange={(e) => setPassword(e.target.value)}
 			/>
 			<button onClick={submit}>Register</button>
+			{/* eslint-enable react/no-unescaped-entities */}
 		</div>
 	);
 }
