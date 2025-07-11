@@ -19,13 +19,16 @@ export default function RegisterPage() {
 			await register(username, password);
 			router.push("/login");
 		} catch (err) {
-			setError("Échec de l'inscription");
+			if (err instanceof Error) {
+				setError(err.message);
+			} else {
+				setError("Une erreur est survenue lors de l'inscription.");
+			}
 		}
 	};
 
 	return (
 		<div>
-			{/* eslint-disable react/no-unescaped-entities */}
 			<h1>Inscription</h1>
 			{error && <p style={{ color: "red" }}>{error}</p>}
 			<input
@@ -40,7 +43,6 @@ export default function RegisterPage() {
 				onChange={(e) => setPassword(e.target.value)}
 			/>
 			<button onClick={submit}>Register</button>
-			{/* eslint-enable react/no-unescaped-entities */}
 		</div>
 	);
 }
